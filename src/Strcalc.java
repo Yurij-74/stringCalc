@@ -18,7 +18,7 @@ public class Strcalc {
         } else if (vvod.contains(" / ")) {
             stroka = vvod.split(" / ");
             peremennaya = '/';
-        }else{
+        } else {
             throw new Exception("Некорректный знак действия");
         }
         if (peremennaya == '*' || peremennaya == '/') {
@@ -29,32 +29,26 @@ public class Strcalc {
         }
 
         if (peremennaya == '+') {
-            printInQuotes(stroka[0] + stroka[1]);
+            Helper.printInQuotes(stroka[0] + stroka[1]);
         } else if (peremennaya == '*') {
             int multiplier = Integer.parseInt(stroka[1]);
             String result = "";
             for (int i = 0; i < multiplier; i++) {
-                result+=stroka[0];
+                result += stroka[0];
             }
-            printInQuotes(result);
+            Helper.printInQuotes(result);
         } else if (peremennaya == '-') {
             int index = stroka[0].indexOf(stroka[1]);
-            if(index == -1){
-                printInQuotes(stroka[0]);
-            }else{
+            if (index == -1) {
+                Helper.printInQuotes(stroka[0]);
+            } else {
                 String result = stroka[0].substring(0, index);
-                result+=stroka[0].substring(index+stroka[1].length());
-                printInQuotes(result);
+                result += stroka[0].substring(index + stroka[1].length());
+                Helper.printInQuotes(result);
             }
-        }else{
-            int newLenth = stroka[0].length()/Integer.parseInt(stroka[1]);
-            String result = stroka[0].substring(0,newLenth);
-            printInQuotes(result);
-        }
-
-
-    }
-    static void printInQuotes(String text){
-        System.out.println("\""+text+"\"");
+        } else {
+            int newLenth = stroka[0].length() / Integer.parseInt(stroka[1]);
+            String result = stroka[0].substring(0, newLenth);
+            Helper.printInQuotes(result);        }
     }
 }
